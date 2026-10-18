@@ -96,6 +96,18 @@ export const es: Record<string, string> = {
   "This keeps you safe.": "Esto te mantiene segura.",
   'Tap "Quick exit" (top corner) anytime to leave instantly for a neutral page. When you aren\'t typing, you can also press the Esc key.':
     'Toca "Salida rápida" (en la esquina) en cualquier momento para ir de inmediato a una página neutral. Cuando no estés escribiendo, también puedes presionar la tecla Esc.',
+  // Intro (draft; needs native-speaker review)
+  "Get Started": "Comenzar",
+  "You have found a safe space.": "Has encontrado un espacio seguro.",
+  "Take a breath.": "Respira.",
+  "There's no rush here.": "Aquí no hay prisa.",
+  "You're all set.": "Todo listo.",
+  "However you arrived today, you're welcome here.":
+    "Como sea que hayas llegado hoy, aquí te damos la bienvenida.",
+  "Enter the portal": "Entrar al portal",
+  "Watch the introduction video": "Ver el video de introducción",
+  "Sometimes, life can feel overwhelming.": "A veces, la vida puede sentirse abrumadora.",
+  "Back to the portal": "Volver al portal",
   // D5 dialog (ADR 0001); copy pending founder approval.
   "What should happen to your saved items?": "¿Qué quieres hacer con tus elementos guardados?",
   "New items will not be saved. Items you already saved stay in this browser on this device until you delete them.":

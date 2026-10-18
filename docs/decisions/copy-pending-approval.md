@@ -29,3 +29,8 @@ Source: `src/components/portal/PrivacyChoice.tsx`, `src/lib/es.ts`
 - [ ] All FAQ answers on the home page (currently tagged "Needs approval")
 
 Fixed along the way: the Spanish translation of the intro's Quick Exit line never displayed, because its dictionary key didn't match the English text.
+
+## New draft Spanish for the intro (previously English-only in Spanish mode)
+
+- [ ] Get Started, You have found a safe space., Take a breath., There's no rush here., You're all set., However you arrived today, you're welcome here., Enter the portal, Watch the introduction video, Sometimes, life can feel overwhelming., Back to the portal. See `src/lib/es.ts` ("Intro" block). The wording is gender-neutral on purpose ("aquí te damos la bienvenida").
+- `src/test/translations.test.ts` now fails if an Intro or Privacy Choice string loses its Spanish entry.

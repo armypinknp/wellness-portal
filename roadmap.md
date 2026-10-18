@@ -1,4 +1,5 @@
 # Roadmap
+
 - [x] Replace privacy/signup choice with anonymous optional local saving
 - [x] Add unified saved collection and explicit saving across relevant activities
 - [x] Verify saving, reopening, export, deletion and storage failure handling

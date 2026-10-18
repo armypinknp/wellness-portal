@@ -37,7 +37,11 @@ export function QuickExitButton({ className = "" }: { className?: string }) {
 export function LangToggle() {
   const { lang, setLang } = usePrefs();
   return (
-    <div role="group" aria-label="Language" className="flex items-center gap-0.5 rounded-full bg-foreground/25 p-1 text-xs font-semibold">
+    <div
+      role="group"
+      aria-label="Language"
+      className="flex items-center gap-0.5 rounded-full bg-foreground/25 p-1 text-xs font-semibold"
+    >
       {(["en", "es"] as const).map((l) => (
         <button
           key={l}
@@ -79,53 +83,78 @@ export function Header() {
   const [floating, setFloating] = useState(false);
   useEffect(() => {
     const h = () => setFloating(window.scrollY > 120);
-    h(); window.addEventListener("scroll", h, { passive: true });
+    h();
+    window.addEventListener("scroll", h, { passive: true });
     return () => window.removeEventListener("scroll", h);
   }, []);
   return (
     <>
-    {/* Quick Exit follows the visitor down the page once the top bar scrolls away. */}
-    <div aria-hidden={!floating} className={`fixed right-4 top-4 z-50 transition-all duration-300 sm:right-6 ${floating ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-4 opacity-0"}`}>
-      <QuickExitButton className="shadow-xl" />
-    </div>
-    <header className="relative z-40 px-3 pt-3">
-      <div className="mx-auto max-w-6xl rounded-[2rem] border border-primary/70 bg-background/85 shadow-lg backdrop-blur">
-      <div className="flex items-center gap-3 px-5 py-3 sm:px-7 sm:py-4">
-        <Link to="/" aria-label="Wellness Portal home"><Logo /></Link>
-        <div className="ml-auto flex items-center gap-2">
-          <LangToggle />
-          <button aria-label={t("menu")} aria-expanded={open} onClick={() => setOpen(!open)} className="grid h-10 w-10 place-items-center rounded-full border bg-card lg:hidden">
-            {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-          </button>
-          <QuickExitButton />
-        </div>
+      {/* Quick Exit follows the visitor down the page once the top bar scrolls away. */}
+      <div
+        aria-hidden={!floating}
+        className={`fixed right-4 top-4 z-50 transition-all duration-300 sm:right-6 ${floating ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-4 opacity-0"}`}
+      >
+        <QuickExitButton className="shadow-xl" />
       </div>
-      <nav aria-label="Portal areas" className={`${open ? "block" : "hidden"} border-t border-primary/30 lg:block`}>
-        <ul className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-2 lg:flex-row lg:flex-wrap lg:gap-1">
-          {navItems.map((n) => (
-            <li key={n.to}>
-              <Link
-                to={n.to}
-                activeOptions={{ exact: n.to === "/" }}
-                onClick={() => setOpen(false)}
-                className="block rounded-full px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-secondary hover:text-secondary-foreground"
-                activeProps={{ className: "bg-secondary text-secondary-foreground" }}
+      <header className="relative z-40 px-3 pt-3">
+        <div className="mx-auto max-w-6xl rounded-[2rem] border border-primary/70 bg-background/85 shadow-lg backdrop-blur">
+          <div className="flex items-center gap-3 px-5 py-3 sm:px-7 sm:py-4">
+            <Link to="/" aria-label="Wellness Portal home">
+              <Logo />
+            </Link>
+            <div className="ml-auto flex items-center gap-2">
+              <LangToggle />
+              <button
+                aria-label={t("menu")}
+                aria-expanded={open}
+                onClick={() => setOpen(!open)}
+                className="grid h-10 w-10 place-items-center rounded-full border bg-card lg:hidden"
               >
-                {t(n.k)}
-              </Link>
-            </li>
-          ))}
-          <li className="mt-2 border-t pt-3 text-xs font-bold uppercase tracking-widest text-muted-foreground lg:hidden">{tx("More tools")}</li>
-          {moreItems.map((n) => (
-            <li key={n.to} className="lg:hidden">
-              <Link to={n.to} onClick={() => setOpen(false)} className="block rounded-full px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-secondary" activeProps={{ className: "bg-secondary text-secondary-foreground" }}>{tx(n.label)}</Link>
-            </li>
-          ))}
-          <li className="sm:hidden pt-2"><LangToggle /></li>
-        </ul>
-      </nav>
-      </div>
-    </header>
+                {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+              </button>
+              <QuickExitButton />
+            </div>
+          </div>
+          <nav
+            aria-label="Portal areas"
+            className={`${open ? "block" : "hidden"} border-t border-primary/30 lg:block`}
+          >
+            <ul className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-2 lg:flex-row lg:flex-wrap lg:gap-1">
+              {navItems.map((n) => (
+                <li key={n.to}>
+                  <Link
+                    to={n.to}
+                    activeOptions={{ exact: n.to === "/" }}
+                    onClick={() => setOpen(false)}
+                    className="block rounded-full px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-secondary hover:text-secondary-foreground"
+                    activeProps={{ className: "bg-secondary text-secondary-foreground" }}
+                  >
+                    {t(n.k)}
+                  </Link>
+                </li>
+              ))}
+              <li className="mt-2 border-t pt-3 text-xs font-bold uppercase tracking-widest text-muted-foreground lg:hidden">
+                {tx("More tools")}
+              </li>
+              {moreItems.map((n) => (
+                <li key={n.to} className="lg:hidden">
+                  <Link
+                    to={n.to}
+                    onClick={() => setOpen(false)}
+                    className="block rounded-full px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-secondary"
+                    activeProps={{ className: "bg-secondary text-secondary-foreground" }}
+                  >
+                    {tx(n.label)}
+                  </Link>
+                </li>
+              ))}
+              <li className="sm:hidden pt-2">
+                <LangToggle />
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
     </>
   );
 }
@@ -142,11 +171,16 @@ export function Footer() {
         <div>
           <p className="mb-2 font-semibold text-foreground">Label legend</p>
           <div className="flex flex-wrap gap-2">
-            <StatusTag status="confirmed" /><StatusTag status="provisional" /><StatusTag status="placeholder" /><StatusTag status="approval" />
+            <StatusTag status="confirmed" />
+            <StatusTag status="provisional" />
+            <StatusTag status="placeholder" />
+            <StatusTag status="approval" />
           </div>
         </div>
         <div className="flex flex-col gap-2">
-          <Link to="/privacy" className="inline-flex items-center gap-2 font-semibold text-primary"><Shield className="h-4 w-4" /> {t("privacy")} information</Link>
+          <Link to="/privacy" className="inline-flex items-center gap-2 font-semibold text-primary">
+            <Shield className="h-4 w-4" /> {t("privacy")} information
+          </Link>
           <p>No sign-up. No profiles. No trackers. Press Esc anytime to leave.</p>
         </div>
       </div>
@@ -164,8 +198,12 @@ const statusStyle: Record<Status, [string, string]> = {
 export function StatusTag({ status, note }: { status: Status; note?: string }) {
   const [label, cls] = statusStyle[status];
   return (
-    <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold dark:brightness-125 ${cls}`} title={note}>
-      {label}{note ? ` · ${note}` : ""}
+    <span
+      className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold dark:brightness-125 ${cls}`}
+      title={note}
+    >
+      {label}
+      {note ? ` · ${note}` : ""}
     </span>
   );
 }
@@ -174,7 +212,11 @@ export function TranslationNote() {
   const t = useT();
   const msg = t("translationPending");
   if (!msg) return null;
-  return <p className="mb-4 rounded-xl border border-dashed bg-muted px-4 py-2 text-sm text-muted-foreground">{msg}</p>;
+  return (
+    <p className="mb-4 rounded-xl border border-dashed bg-muted px-4 py-2 text-sm text-muted-foreground">
+      {msg}
+    </p>
+  );
 }
 
 export type Accent = "pink" | "teal" | "plum" | "coral" | "slate";
@@ -187,22 +229,54 @@ const accentStyle: Record<Accent, [string, string]> = {
 };
 
 export function PageShell({
-  title, intro, tags, back, accent = "pink", center = false, children,
-}: { center?: boolean; title: string; intro?: string; tags?: ReactNode; back?: { to: string; label: string }; accent?: Accent; children: ReactNode }) {
+  title,
+  intro,
+  tags,
+  back,
+  accent = "pink",
+  center = false,
+  children,
+}: {
+  center?: boolean;
+  title: string;
+  intro?: string;
+  tags?: ReactNode;
+  back?: { to: string; label: string };
+  accent?: Accent;
+  children: ReactNode;
+}) {
   const tx = useTx();
   const [titleCls, glow] = accentStyle[accent];
   return (
     <main className="relative mx-auto max-w-6xl px-4 pt-8">
-      <div aria-hidden className={`pointer-events-none absolute inset-x-0 -top-32 -z-10 h-96 bg-gradient-to-b ${glow} to-transparent blur-2xl`} />
+      <div
+        aria-hidden
+        className={`pointer-events-none absolute inset-x-0 -top-32 -z-10 h-96 bg-gradient-to-b ${glow} to-transparent blur-2xl`}
+      />
       {back && (
-        <Link to={back.to} className="mb-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-foreground">
+        <Link
+          to={back.to}
+          className="mb-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-foreground"
+        >
           <ArrowLeft className="h-4 w-4" /> {tx(back.label)}
         </Link>
       )}
       <TranslationNote />
-      {tags && <div className={`mb-3 flex flex-wrap gap-2 ${center ? "justify-center" : ""}`}>{tags}</div>}
-      <h1 className={`font-display text-3xl sm:text-5xl ${titleCls} ${center ? "text-center" : ""}`}>{tx(title)}</h1>
-      {intro && <p className={`mt-3 max-w-2xl text-lg text-muted-foreground ${center ? "mx-auto text-center" : ""}`}>{tx(intro)}</p>}
+      {tags && (
+        <div className={`mb-3 flex flex-wrap gap-2 ${center ? "justify-center" : ""}`}>{tags}</div>
+      )}
+      <h1
+        className={`font-display text-3xl sm:text-5xl ${titleCls} ${center ? "text-center" : ""}`}
+      >
+        {tx(title)}
+      </h1>
+      {intro && (
+        <p
+          className={`mt-3 max-w-2xl text-lg text-muted-foreground ${center ? "mx-auto text-center" : ""}`}
+        >
+          {tx(intro)}
+        </p>
+      )}
       <div className="mt-8">{children}</div>
     </main>
   );

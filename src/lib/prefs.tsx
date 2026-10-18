@@ -1,4 +1,11 @@
-import { createContext, useContext, useEffect, useState, type ReactNode, type ContextType } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  type ReactNode,
+  type ContextType,
+} from "react";
 import { track } from "./analytics";
 import { es } from "./es";
 
@@ -50,7 +57,16 @@ export function PrefsProvider({ children }: { children: ReactNode }) {
 
   return (
     <Ctx.Provider
-      value={{ lang, setLang, theme, setTheme, largeText, setLargeText, reduceMotion, setReduceMotion }}
+      value={{
+        lang,
+        setLang,
+        theme,
+        setTheme,
+        largeText,
+        setLargeText,
+        reduceMotion,
+        setReduceMotion,
+      }}
     >
       {children}
     </Ctx.Provider>
@@ -59,8 +75,14 @@ export function PrefsProvider({ children }: { children: ReactNode }) {
 
 // Safe fallback (e.g. during hot reload when the provider remounts) instead of blanking the page.
 const fallbackPrefs = {
-  lang: "en", setLang: () => {}, theme: "dark", setTheme: () => {},
-  largeText: false, setLargeText: () => {}, reduceMotion: false, setReduceMotion: () => {},
+  lang: "en",
+  setLang: () => {},
+  theme: "dark",
+  setTheme: () => {},
+  largeText: false,
+  setLargeText: () => {},
+  reduceMotion: false,
+  setReduceMotion: () => {},
 } as unknown as NonNullable<ContextType<typeof Ctx>>;
 
 export function usePrefs() {
@@ -129,7 +151,8 @@ const dict = {
     okay: "De acuerdo",
     next: "Continuar",
     skip: "Omitir",
-    translationPending: "Traducción al español en borrador, pendiente de revisión. Algunos contenidos aún están en inglés.",
+    translationPending:
+      "Traducción al español en borrador, pendiente de revisión. Algunos contenidos aún están en inglés.",
     saveDevice: "Guardar en mi dispositivo",
     emailMe: "Enviarme por correo",
     deleteSaved: "Borrar contenido guardado",
@@ -149,5 +172,5 @@ export function useT() {
 /** Translate a feature string (draft Spanish); falls back to English when no entry exists. */
 export function useTx() {
   const { lang } = usePrefs();
-  return (s: string) => (lang === "es" ? es[s] ?? s : s);
+  return (s: string) => (lang === "es" ? (es[s] ?? s) : s);
 }

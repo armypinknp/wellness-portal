@@ -158,9 +158,12 @@
   background: radial-gradient(120% 60% at 50% 0%, #5e3a50, var(--background) 70%) fixed;
 }
 
-
-html.text-lg-mode { font-size: 112.5%; }
-html.reduce-motion *, html.reduce-motion *::before, html.reduce-motion *::after {
+html.text-lg-mode {
+  font-size: 112.5%;
+}
+html.reduce-motion *,
+html.reduce-motion *::before,
+html.reduce-motion *::after {
   animation: none !important;
   transition: none !important;
 }
@@ -173,45 +176,106 @@ html.reduce-motion *, html.reduce-motion *::before, html.reduce-motion *::after 
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
+  * {
+    border-color: var(--color-border);
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
   }
   /* Design guide type scale (Montserrat): H1 48 bold, H2 40 bold, sub-heading 36 semibold, body 24 regular, buttons 24 medium — scaled down on phones. */
-  h1, h2, h3, .font-display { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.01em; }
-  h3 { font-weight: 600; }
-  button, [role="button"] { font-weight: 500; }
-  :focus-visible { outline: 3px solid var(--color-ring); outline-offset: 2px; }
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  h3 {
+    font-weight: 600;
+  }
+  button,
+  [role="button"] {
+    font-weight: 500;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-ring);
+    outline-offset: 2px;
+  }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-12px) rotate(1.5deg); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(1.5deg);
+  }
 }
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
-@utility animate-float { animation: float 5s ease-in-out infinite; }
+@utility animate-float {
+  animation: float 5s ease-in-out infinite;
+}
 @utility animate-marquee {
   animation: marquee 40s linear infinite;
-  &:hover { animation-play-state: paused; }
+  &:hover {
+    animation-play-state: paused;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
-  .animate-float, .animate-marquee { animation: none; }
+  .animate-float,
+  .animate-marquee {
+    animation: none;
+  }
 }
 
 /* Design guide type scale: full size on desktop, scaled down on smaller screens. */
-main h1 { font-size: clamp(2rem, 1.2rem + 2.6vw, 3rem) !important; line-height: 1.15; font-weight: 700; }
-main h2 { font-size: clamp(1.5rem, 0.9rem + 2vw, 2.5rem) !important; line-height: 1.2; font-weight: 700; }
+main h1 {
+  font-size: clamp(2rem, 1.2rem + 2.6vw, 3rem) !important;
+  line-height: 1.15;
+  font-weight: 700;
+}
+main h2 {
+  font-size: clamp(1.5rem, 0.9rem + 2vw, 2.5rem) !important;
+  line-height: 1.2;
+  font-weight: 700;
+}
 @media (min-width: 1024px) {
-  main p:not([class*="text-xs"]):not([class*="text-sm"]):not([class*="text-lg"]):not([class*="text-xl"]):not([class*="text-2xl"]) { font-size: 1.25rem; }
-  main a[class*="rounded-full"], main button[class*="rounded-full"] { font-size: 1.125rem; font-weight: 500; }
+  main
+    p:not([class*="text-xs"]):not([class*="text-sm"]):not([class*="text-lg"]):not(
+      [class*="text-xl"]
+    ):not([class*="text-2xl"]) {
+    font-size: 1.25rem;
+  }
+  main a[class*="rounded-full"],
+  main button[class*="rounded-full"] {
+    font-size: 1.125rem;
+    font-weight: 500;
+  }
 }
 @media (min-width: 1280px) {
-  main p:not([class*="text-xs"]):not([class*="text-sm"]):not([class*="text-lg"]):not([class*="text-xl"]):not([class*="text-2xl"]) { font-size: 1.5rem; }
+  main
+    p:not([class*="text-xs"]):not([class*="text-sm"]):not([class*="text-lg"]):not(
+      [class*="text-xl"]
+    ):not([class*="text-2xl"]) {
+    font-size: 1.5rem;
+  }
 }
-[aria-roledescription="carousel"] { --step: 9.5rem; }
-@media (min-width: 640px) { [aria-roledescription="carousel"] { --step: 13rem; } }
+[aria-roledescription="carousel"] {
+  --step: 9.5rem;
+}
+@media (min-width: 640px) {
+  [aria-roledescription="carousel"] {
+    --step: 13rem;
+  }
+}

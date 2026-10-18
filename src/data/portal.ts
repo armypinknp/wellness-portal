@@ -1,12 +1,54 @@
 export type Status = "confirmed" | "provisional" | "placeholder" | "approval";
 
 export const recoveryRooms = [
-  { slug: "crisis", forWhen: "You feel unsafe, panicked or overwhelmed right now", stage: 1, name: "Crisis", blurb: "For the hardest moments. Steady yourself first.", color: "bg-primary" },
-  { slug: "clarity", forWhen: "You're trying to understand what happened", stage: 2, name: "Clarity", blurb: "Make sense of what happened, gently.", color: "bg-teal" },
-  { slug: "safety", forWhen: "You need practical steps and steadier routines", stage: 3, name: "Safety & Stability", blurb: "Build steadier ground under your feet.", color: "bg-lavender" },
-  { slug: "healing", forWhen: "You're ready to tend to sleep, grief and your body", stage: 4, name: "Healing", blurb: "Tend to sleep, grief, body and heart.", color: "bg-plum" },
-  { slug: "rebuilding", forWhen: "You want confidence, skills and new habits", stage: 5, name: "Rebuilding", blurb: "Confidence, routines and new skills.", color: "bg-coral" },
-  { slug: "future", forWhen: "You're imagining and planning what comes next", stage: 6, name: "Future", blurb: "Imagine and plan what comes next.", color: "bg-calm" },
+  {
+    slug: "crisis",
+    forWhen: "You feel unsafe, panicked or overwhelmed right now",
+    stage: 1,
+    name: "Crisis",
+    blurb: "For the hardest moments. Steady yourself first.",
+    color: "bg-primary",
+  },
+  {
+    slug: "clarity",
+    forWhen: "You're trying to understand what happened",
+    stage: 2,
+    name: "Clarity",
+    blurb: "Make sense of what happened, gently.",
+    color: "bg-teal",
+  },
+  {
+    slug: "safety",
+    forWhen: "You need practical steps and steadier routines",
+    stage: 3,
+    name: "Safety & Stability",
+    blurb: "Build steadier ground under your feet.",
+    color: "bg-lavender",
+  },
+  {
+    slug: "healing",
+    forWhen: "You're ready to tend to sleep, grief and your body",
+    stage: 4,
+    name: "Healing",
+    blurb: "Tend to sleep, grief, body and heart.",
+    color: "bg-plum",
+  },
+  {
+    slug: "rebuilding",
+    forWhen: "You want confidence, skills and new habits",
+    stage: 5,
+    name: "Rebuilding",
+    blurb: "Confidence, routines and new skills.",
+    color: "bg-coral",
+  },
+  {
+    slug: "future",
+    forWhen: "You're imagining and planning what comes next",
+    stage: 6,
+    name: "Future",
+    blurb: "Imagine and plan what comes next.",
+    color: "bg-calm",
+  },
 ] as const;
 
 export const calmMedia = [
@@ -26,8 +68,14 @@ export const libraryCategories = [
 ] as const;
 
 export type Resource = {
-  id: string; category: string; title: string; type: string;
-  formatNote: string; minutes: number; external: boolean; contentNote?: string | undefined;
+  id: string;
+  category: string;
+  title: string;
+  type: string;
+  formatNote: string;
+  minutes: number;
+  external: boolean;
+  contentNote?: string | undefined;
 };
 
 export const resources: Resource[] = libraryCategories.flatMap((c) =>
@@ -36,10 +84,18 @@ export const resources: Resource[] = libraryCategories.flatMap((c) =>
     category: c.slug,
     title: `${c.name} — sample resource ${n}`,
     type: n === 1 ? "Article" : n === 2 ? "Downloadable guide" : "External resource",
-    formatNote: n === 1 ? "Text you read on screen" : n === 2 ? "PDF you can save to your device" : "Partner website",
+    formatNote:
+      n === 1
+        ? "Text you read on screen"
+        : n === 2
+          ? "PDF you can save to your device"
+          : "Partner website",
     minutes: n === 1 ? 5 : n === 2 ? 10 : 8,
     external: n === 3,
-    contentNote: c.slug === "understanding-abuse" || c.slug === "trauma-and-the-body" ? "Describes forms of abuse. Go at your own pace." : undefined,
+    contentNote:
+      c.slug === "understanding-abuse" || c.slug === "trauma-and-the-body"
+        ? "Describes forms of abuse. Go at your own pace."
+        : undefined,
   })),
 );
 
@@ -51,9 +107,16 @@ export const notBrokenModules = [
 ] as const;
 
 export const opportunityCategories = [
-  "Education", "Scholarships", "Employment", "Training", "Mentorship",
-  "Career Development", "Financial Opportunities", "Community Programs",
-  "Entrepreneurship", "Personal Growth",
+  "Education",
+  "Scholarships",
+  "Employment",
+  "Training",
+  "Mentorship",
+  "Career Development",
+  "Financial Opportunities",
+  "Community Programs",
+  "Entrepreneurship",
+  "Personal Growth",
 ] as const;
 
 export const opportunities = opportunityCategories.flatMap((cat, i) =>

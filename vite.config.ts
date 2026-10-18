@@ -7,9 +7,5 @@ import tailwindcss from "@tailwindcss/vite";
 // a single shell page; Vercel rewrites every route to it (see vercel.json).
 export default defineConfig({
   resolve: { tsconfigPaths: true },
-  plugins: [
-    tailwindcss(),
-    tanstackStart({ spa: { enabled: true } }),
-    viteReact(),
-  ],
+  plugins: [tailwindcss(), tanstackStart({ spa: { enabled: true } }), viteReact()],
 });

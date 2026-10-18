@@ -5,12 +5,14 @@ import { SavingProvider, useSaving } from "@/components/portal/SavingProvider";
 
 function ChoiceProbe() {
   const saving = useSaving();
-  return <>
-    <p role="status">{saving.preference ?? "not chosen"}</p>
-    <p>{saving.error}</p>
-    <button onClick={() => void saving.choose("device")}>Device</button>
-    <button onClick={() => void saving.choose("none")}>No saving</button>
-  </>;
+  return (
+    <>
+      <p role="status">{saving.preference ?? "not chosen"}</p>
+      <p>{saving.error}</p>
+      <button onClick={() => void saving.choose("device")}>Device</button>
+      <button onClick={() => void saving.choose("none")}>No saving</button>
+    </>
+  );
 }
 
 describe("Saving context recovery", () => {
@@ -23,7 +25,11 @@ describe("Saving context recovery", () => {
     await waitFor(() => expect(screen.getByRole("status").textContent).toBe("none"));
   });
   it("uses real device preferences when the provider is mounted", async () => {
-    render(<SavingProvider><ChoiceProbe /></SavingProvider>);
+    render(
+      <SavingProvider>
+        <ChoiceProbe />
+      </SavingProvider>,
+    );
     fireEvent.click(screen.getByText("Device"));
     await waitFor(() => expect(screen.getByRole("status").textContent).toBe("device"));
   });

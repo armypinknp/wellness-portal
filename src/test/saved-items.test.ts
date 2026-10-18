@@ -2,8 +2,16 @@ import "fake-indexeddb/auto";
 import { beforeEach, describe, expect, it } from "vitest";
 import { collectionBlob, savedItemsStore } from "@/lib/saved-items";
 
-const content = { room: "Art Room", activity: "Artwork", source: "/art-room", text: "My reflection" };
-beforeEach(async () => { await savedItemsStore.clear(true); await savedItemsStore.setPreference("none"); });
+const content = {
+  room: "Art Room",
+  activity: "Artwork",
+  source: "/art-room",
+  text: "My reflection",
+};
+beforeEach(async () => {
+  await savedItemsStore.clear(true);
+  await savedItemsStore.setPreference("none");
+});
 
 describe("Explicit browser saving", () => {
   it("does not create personal items when enabling saving", async () => {
@@ -48,8 +56,13 @@ describe("Explicit browser saving", () => {
   it("reports unavailable browser storage without saving", async () => {
     const original = globalThis.indexedDB;
     Object.defineProperty(globalThis, "indexedDB", { value: undefined, configurable: true });
-    try { await expect(savedItemsStore.save(content, "device")).rejects.toThrow("Browser storage is unavailable or full"); }
-    finally { Object.defineProperty(globalThis, "indexedDB", { value: original, configurable: true }); }
+    try {
+      await expect(savedItemsStore.save(content, "device")).rejects.toThrow(
+        "Browser storage is unavailable or full",
+      );
+    } finally {
+      Object.defineProperty(globalThis, "indexedDB", { value: original, configurable: true });
+    }
     expect(await savedItemsStore.list()).toHaveLength(0);
   });
 });

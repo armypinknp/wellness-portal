@@ -1,4 +1,5 @@
 <!-- LOVABLE:BEGIN -->
+
 > [!IMPORTANT]
 > This project is connected to [Lovable](https://lovable.dev). Avoid rewriting
 > published git history — force pushing, or rebasing/amending/squashing commits
@@ -7,9 +8,11 @@
 >
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
+
 <!-- LOVABLE:END -->
 
 ## Wellness Portal prototype
+
 - Frontend-only clickable prototype: no backend, auth, or live analytics — client requirements forbid them at this stage.
 - `src/lib/analytics.ts` `track()` is a deliberate no-op; call sites mark future events so wiring later is one change.
 - UI strings live in the `src/lib/prefs.tsx` dictionary; feature text is translated via `useTx()` with draft Spanish in `src/lib/es.ts` (falls back to English). Sensitive survivor guidance stays untranslated until approved.

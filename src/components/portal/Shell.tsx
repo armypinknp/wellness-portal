@@ -14,9 +14,30 @@ export function quickExit() {
   window.location.replace(QUICK_EXIT_URL);
 }
 
+/**
+ * D4: Esc leaves the Portal, except when it would interrupt the visitor:
+ * an open dialog/menu (Esc closes it instead) or a focused text field or
+ * canvas (stray presses must not lose unsaved writing or drawing).
+ * The Quick Exit button always works.
+ */
+export function shouldQuickExitOnKey(e: KeyboardEvent, doc: Document = document): boolean {
+  if (e.key !== "Escape" || e.defaultPrevented) return false;
+  if (doc.querySelector('[role="dialog"], [role="alertdialog"], [role="menu"], [role="listbox"]'))
+    return false;
+  const el = doc.activeElement;
+  if (!(el instanceof HTMLElement)) return true;
+  return !(
+    el.isContentEditable ||
+    el instanceof HTMLTextAreaElement ||
+    el instanceof HTMLSelectElement ||
+    el instanceof HTMLCanvasElement ||
+    (el instanceof HTMLInputElement && !["button", "checkbox", "radio", "submit"].includes(el.type))
+  );
+}
+
 export function useQuickExitKey() {
   useEffect(() => {
-    const h = (e: KeyboardEvent) => e.key === "Escape" && quickExit();
+    const h = (e: KeyboardEvent) => shouldQuickExitOnKey(e) && quickExit();
     window.addEventListener("keydown", h);
     return () => window.removeEventListener("keydown", h);
   }, []);
@@ -181,7 +202,7 @@ export function Footer() {
           <Link to="/privacy" className="inline-flex items-center gap-2 font-semibold text-primary">
             <Shield className="h-4 w-4" /> {t("privacy")} information
           </Link>
-          <p>No sign-up. No profiles. No trackers. Press Esc anytime to leave.</p>
+          <p>No sign-up. No profiles. No trackers. Use Quick Exit or press Esc to leave.</p>
         </div>
       </div>
     </footer>

@@ -62,6 +62,10 @@ function Privacy() {
           your browser history and cannot guarantee that no one is monitoring your device. Consider
           using a private browsing window.
         </p>
+        <p className="mt-2">
+          The Esc key does not leave while you are typing, drawing or have a window open, so a stray
+          key press cannot lose your work. The Quick Exit button always works.
+        </p>
         <div className="mt-3">
           <StatusTag status="approval" note="destination & production behavior" />
         </div>

@@ -116,7 +116,7 @@ const dict = {
     gotIt: "Got it",
     okay: "Okay",
     next: "Continue",
-    skip: "Skip",
+    skip: "Skip intro",
     translationPending: "",
     saveDevice: "Save to my device",
     emailMe: "Email to myself",
@@ -150,7 +150,7 @@ const dict = {
     gotIt: "Entendido",
     okay: "De acuerdo",
     next: "Continuar",
-    skip: "Omitir",
+    skip: "Omitir introducción",
     translationPending:
       "Traducción al español en borrador, pendiente de revisión. Algunos contenidos aún están en inglés.",
     saveDevice: "Guardar en mi dispositivo",

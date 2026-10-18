@@ -35,3 +35,6 @@ dist-ssr
 !.env.example
 test-results/
 playwright-report/
+
+# Original Lovable export, kept locally for reference
+/ap-wellnessportal-prototype.zip

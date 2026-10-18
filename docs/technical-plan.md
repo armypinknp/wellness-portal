@@ -9,9 +9,9 @@ The Wellness Portal is a free, anonymous website that Army Pink is building for 
 - **Where we are.** The foundation is complete and tested, about two weeks ahead of the original schedule. The site builds and runs, the privacy choice and device-only saving work end to end, and 92 automated tests pass. Most content is still placeholder text.
 - **How it is built.** The Portal is a static website with no backend server. That one decision removes the biggest privacy risk, a central store of survivors' data, and keeps the project cheap and simple for a volunteer team to run. Section 4 explains why.
 - **What happens next.** Six workstreams run in parallel over six weeks: saving polish, Spanish translation, real content, the recovery rooms, quality and security, and release.
-- **What changed in scope.** The developers are volunteers giving about 5 hours a week. The full interactive Art Room therefore moves to a second milestone, targeted for 18 December. The basic Art Room canvas ships at launch.
+- **What changed in scope.** The team is 4 volunteer developers giving about 5 hours a week, roughly 13 focused hours in total. That covers about 68 hours of work before 30 November, so the launch keeps every core feature and moves 33 hours of polish and tooling to a follow-up release in January. The full interactive Art Room moves to a second milestone, targeted for 15 January 2027. The basic Art Room canvas ships at launch.
 - **What we need from leadership.**
-  - confirmation of how many volunteers are active
+  - agreement that the deferred items in section 9 can follow in January
   - an owner for real content and for Spanish review
   - approval of the survivor-facing wording listed in section 11
 
@@ -189,18 +189,20 @@ No Spanish is shown for any clinical or safety content until TR-06 marks it appr
 
 ## 7. Team capacity
 
-The team has about 20 focused hours a week. This assumes 6 volunteers at 5 hours each, of which about two-thirds goes into tickets; the rest is code review, questions and context switching. With 5.5 working weeks to 29 November, that is about 110 focus hours. Thanksgiving week counts as half.
+The team has about 13 focused hours a week. That is 4 volunteers (confirmed 18 October) at 5 hours each, of which about two-thirds goes into tickets; the rest is code review, questions and context switching. With 5.5 working weeks to 29 November, that is about 74 focus hours, against 101 hours in the original release scope. The 33 lowest-risk hours move to Release 1.1 in January, leaving 68 hours and a 6-hour buffer. Thanksgiving week counts as half.
 
-| Input                     | Value    | Note                                                             |
-| ------------------------- | -------- | ---------------------------------------------------------------- |
-| Volunteer developers      | 6        | Assumption; recalculate when the roster is known                 |
-| Hours per person per week | 5        | Average stated by the team lead                                  |
-| Share spent on tickets    | 67%      | Remainder covers review, questions and setup                     |
-| Focus hours per week      | 20       | 6 × 5 × 0.67                                                     |
-| Weeks to release          | 5.5      | 19 Oct–29 Nov, Thanksgiving week at half                         |
-| Focus hours to release    | 110      |                                                                  |
-| Remaining release scope   | 104      | Backlog below, excluding the full Art Room                       |
-| Buffer                    | 6 h (5%) | Very thin: with fewer than 6 people, defer AP-12 and TR-07 first |
+| Input                     | Value    | Note                                                |
+| ------------------------- | -------- | --------------------------------------------------- |
+| Volunteer developers      | 4        | Confirmed 18 October                                |
+| Hours per person per week | 5        | Average stated by the team lead                     |
+| Share spent on tickets    | 67%      | Remainder covers review, questions and setup        |
+| Focus hours per week      | 13       | 4 × 5 × 0.67 = 13.4                                 |
+| Weeks to release          | 5.5      | 19 Oct–29 Nov, Thanksgiving week at half            |
+| Focus hours to release    | 74       |                                                     |
+| Original release scope    | 101      | 104 planned, less AP-11 (CI), which is already done |
+| Moved to Release 1.1      | 33       | Listed under "Deferred to Release 1.1" in section 9 |
+| Release scope now         | 68       |                                                     |
+| Buffer                    | 6 h (8%) | One volunteer missing a full week uses most of it   |
 
 **Working rules that make 5-hour weeks work.**
 
@@ -212,56 +214,61 @@ The team has about 20 focused hours a week. This assumes 6 volunteers at 5 hours
 
 ## 8. Schedule
 
-The core Portal releases on 30 November in English and Spanish. The full Art Room becomes a separate milestone with a target of 18 December, because the original plan's Art Room work does not fit in 5-hour weeks before then.
+The core Portal releases on 30 November in English and Spanish. The full Art Room becomes a separate milestone with a target of 15 January 2027, because the Art Room work does not fit in the team's 13 hours a week before launch. Lower-risk polish follows in Release 1.1 by 29 January 2027.
 
-![Schedule: tickets by week across 7 workstreams, core release 30 Nov, full Art Room by 18 Dec](images/schedule-timeline.png)
+![Schedule for 4 volunteers: core release 30 Nov, full Art Room by 15 Jan 2027, Release 1.1 by 29 Jan](images/schedule-timeline.png)
 
 Phases now run as parallel workstreams rather than in sequence. Week 6 holds only stabilization because of Thanksgiving. At launch the Art Room ships its current three-stage canvas, labelled as an early version.
 
-| Phase                                     | Original dates         | Revised dates           | State                 |
-| ----------------------------------------- | ---------------------- | ----------------------- | --------------------- |
-| 0 Audit and alignment                     | 19–23 Oct              | 18 Oct                  | Done                  |
-| 1 Shared foundation                       | 26–30 Oct              | 18 Oct                  | Done                  |
-| 2 Saving MVP                              | 2–6 Nov                | 18 Oct; polish in W1–W2 | Done; AP-07 remaining |
-| 3 Core experiences and content            | 9–13 Nov               | W1–W4                   | Planned               |
-| Spanish translation (new)                 | Not planned            | W1–W5                   | Planned               |
-| 4 Opportunities, partners, Art Room spike | 16–20 Nov              | W3–W5                   | Planned               |
-| 5 Testing, security, release readiness    | 23–25 Nov              | W5–W6                   | Partly in place       |
-| 6 Stabilization and release               | 26–30 Nov              | W6, release 30 Nov      | Planned               |
-| Art Room full build                       | 23–25 Nov, if feasible | 1–18 Dec                | Moved                 |
+| Phase                                     | Original dates         | Revised dates                           | State                 |
+| ----------------------------------------- | ---------------------- | --------------------------------------- | --------------------- |
+| 0 Audit and alignment                     | 19–23 Oct              | 18 Oct                                  | Done                  |
+| 1 Shared foundation                       | 26–30 Oct              | 18 Oct                                  | Done                  |
+| 2 Saving MVP                              | 2–6 Nov                | 18 Oct; polish in W1–W2                 | Done; AP-07 remaining |
+| 3 Core experiences and content            | 9–13 Nov               | W1–W4                                   | Planned               |
+| Spanish translation (new)                 | Not planned            | W1–W5                                   | Planned               |
+| 4 Opportunities, partners, Art Room spike | 16–20 Nov              | W2–W4; Art Room spike moved to December | Planned               |
+| 5 Testing, security, release readiness    | 23–25 Nov              | W5–W6                                   | Partly in place       |
+| 6 Stabilization and release               | 26–30 Nov              | W6, release 30 Nov                      | Planned               |
+| Art Room full build                       | 23–25 Nov, if feasible | 1 Dec–15 Jan, with a holiday break      | Moved                 |
 
 ## 9. Work backlog
 
-Release scope is 104 developer hours in tickets of 5 hours or less, ordered by week. AP-01 to AP-06 and AP-08 are done. TR-06 is review work for the content team and is not counted in developer hours.
+Release scope is 68 developer hours in tickets of 5 hours or less, about 13 hours a week. AP-01 to AP-06, AP-08 and AP-11 (CI) are done. TR-06 is review work for the content team and is not counted in developer hours.
 
-| Week | ID     | Ticket                                      | Workstream    | Hours    | Depends on | Acceptance criteria                                                |
-| ---- | ------ | ------------------------------------------- | ------------- | -------- | ---------- | ------------------------------------------------------------------ |
-| W1   | AP-11  | CI workflow                                 | QA & security | 3        | None       | Every PR runs typecheck, lint, unit and browser tests              |
-| W1   | TR-01  | Typed catalog and `t()`                     | Spanish       | 5        | None       | Unknown key fails typecheck; `<html lang>` follows choice          |
-| W1   | AP-07a | My Saved Items: group by room and activity  | Saving        | 3        | None       | Grouped list; filter keeps working; component test                 |
-| W1   | AP-10a | Accessibility checks with axe               | QA & security | 3        | None       | No serious or critical axe findings on any route                   |
-| W1   | AP-13a | Content schemas (Zod) for JSON              | Content       | 4        | None       | Schemas for library, modules, opportunities, partners, calm media  |
-| W2   | AP-07b | Saved Items: empty, error and reopen states | Saving        | 3        | AP-07a     | Tests for empty, storage-error and missing-item cases              |
-| W2   | TR-02a | Move shell and privacy strings to keys      | Spanish       | 4        | TR-01      | No sentence keys left in those files                               |
-| W2   | AP-13b | Healing Library as JSON                     | Content       | 4        | AP-13a     | Library pages read JSON; `data/portal.ts` entries removed          |
-| W2   | AP-09  | Remaining security items                    | QA & security | 4        | None       | Unused dependencies and components removed; dependency audit clean |
-| W2   | AP-12  | Analytics allowlist adapter (off)           | QA & security | 5        | None       | Rejects unknown events and free text; stays a no-op                |
-| W3   | TR-02b | Move room and library strings to keys       | Spanish       | 6        | TR-01      | Three PRs, one per area                                            |
-| W3   | AP-13c | Modules and Opportunities as JSON           | Content       | 4        | AP-13a     | Existing Opportunities categories preserved                        |
-| W3   | AP-14a | Recovery Rooms on shared components         | Rooms         | 4        | AP-13a     | Room pages use the shared card and SaveActions                     |
-| W3   | TR-03  | Review status and sensitive fallback        | Spanish       | 4        | TR-01      | Sensitive strings show English plus a notice until approved        |
-| W4   | AP-13d | Calm Room and partners as JSON              | Content       | 4        | AP-13a     | No invented partners; placeholders stay labelled                   |
-| W4   | AP-14b | Calm Room and Journals on shared components | Rooms         | 4        | AP-13d     | Media player accessible by keyboard; captions placeholder kept     |
-| W4   | AP-14c | Decision Support and Toolkit cleanup        | Rooms         | 4        | None       | Simulated PIN keeps its badge; save flow tested                    |
-| W4   | TR-04  | Translator CSV export/import and coverage   | Spanish       | 5        | TR-02a     | CSV round trip loses nothing; CI fails on missing keys             |
-| W4   | AP-18a | Art Room feasibility spike, part 1          | Art Room      | 3        | None       | Canvas approach chosen; touch and reduced-motion notes             |
-| W5   | TR-05  | Spanish layout QA                           | Spanish       | 4        | TR-02b     | Every route in Spanish passes on mobile and desktop                |
-| W5   | TR-07  | Spanish fields in content JSON              | Spanish       | 6        | AP-13b–d   | Status per record; fallback rule applied                           |
-| W5   | AP-10b | Browser tests per room                      | QA & security | 3        | AP-14a–c   | Each room's save path covered                                      |
-| W5   | AP-18b | Art Room spike, part 2 and estimate         | Art Room      | 3        | AP-18a     | Written estimate and ticket split for December                     |
-| W5   | AP-17  | Vercel deployment and rollback runbook      | QA & security | 4        | AP-11      | Preview deploy verified; rollback rehearsed once                   |
-| W6   | REL-01 | Stabilization and release checklist         | All           | 8        | All above  | Founder acceptance; known-limitations list published               |
-| Dec  | AP-16  | Full Art Room experience                    | Art Room      | about 30 | AP-18b     | Split into 5-hour tickets by the spike                             |
+| Week | ID      | Ticket                                       | Workstream    | Hours | Depends on | Acceptance criteria                                               |
+| ---- | ------- | -------------------------------------------- | ------------- | ----- | ---------- | ----------------------------------------------------------------- |
+| W1   | TR-01   | Typed catalog and `t()`                      | Spanish       | 5     | None       | Unknown key fails typecheck; `<html lang>` follows choice         |
+| W1   | AP-07a  | My Saved Items: group by room and activity   | Saving        | 3     | None       | Grouped list; filter keeps working; component test                |
+| W1   | AP-13a  | Content schemas (Zod) for JSON               | Content       | 4     | None       | Schemas for library, modules, opportunities, partners, calm media |
+| W2   | AP-07b  | Saved Items: empty, error and reopen states  | Saving        | 3     | AP-07a     | Tests for empty, storage-error and missing-item cases             |
+| W2   | TR-02a  | Move shell and privacy strings to keys       | Spanish       | 4     | TR-01      | No sentence keys left in those files                              |
+| W2   | AP-13b  | Healing Library as JSON                      | Content       | 4     | AP-13a     | Library pages read JSON; `data/portal.ts` entries removed         |
+| W2   | AP-10a  | Accessibility checks with axe                | QA & security | 3     | None       | No serious or critical axe findings on any route                  |
+| W3   | TR-02b  | Move room and library strings to keys        | Spanish       | 6     | TR-01      | Three PRs, one per area                                           |
+| W3   | AP-13c  | Modules and Opportunities as JSON            | Content       | 4     | AP-13a     | Existing Opportunities categories preserved                       |
+| W3   | TR-03   | Review status and sensitive fallback         | Spanish       | 4     | TR-01      | Sensitive strings show English plus a notice until approved       |
+| W4   | AP-13d  | Calm Room and partners as JSON               | Content       | 4     | AP-13a     | No invented partners; placeholders stay labelled                  |
+| W4   | AP-14a  | Recovery Rooms on shared components          | Rooms         | 4     | AP-13a     | Room pages use the shared card and SaveActions                    |
+| W4   | AP-14b  | Calm Room and Journals on shared components  | Rooms         | 4     | AP-13d     | Media player accessible by keyboard; captions placeholder kept    |
+| W5   | TR-05   | Spanish layout QA                            | Spanish       | 4     | TR-02b     | Every route in Spanish passes on mobile and desktop               |
+| W5   | AP-17   | Vercel deployment and rollback runbook       | QA & security | 4     | AP-11      | Preview deploy verified; rollback rehearsed once                  |
+| W5   | REL-01a | Release checklist and known-limitations list | All           | 3     | All above  | Checklist agreed with the founder                                 |
+| W6   | REL-01b | Stabilization and launch                     | All           | 5     | REL-01a    | Founder acceptance; release deployed 30 Nov                       |
+
+**Deferred to Release 1.1 (January 2027).** These 33 hours are the lowest-risk items: the launch works without them, and existing tests already cover the main flows. They are scheduled first after the Art Room work.
+
+| ID       | Ticket                                               | Hours | Why it can wait                                                |
+| -------- | ---------------------------------------------------- | ----- | -------------------------------------------------------------- |
+| AP-09    | Remaining security items (dependency pruning, audit) | 4     | Strict CSP and headers already in place                        |
+| AP-12    | Analytics allowlist adapter                          | 5     | Analytics stays off until the event list is approved anyway    |
+| TR-04    | Translator CSV export/import                         | 5     | Reviewers can work from the JSON files with a developer's help |
+| TR-07    | Spanish fields in content JSON                       | 6     | Content shows in English with a notice until then              |
+| AP-14c   | Decision Support and Toolkit cleanup                 | 4     | Both pages already work and save correctly                     |
+| AP-10b   | Browser tests per room                               | 3     | The main save flows are already tested                         |
+| AP-18a/b | Art Room feasibility spike                           | 6     | Moves with the Art Room milestone                              |
+
+**Art Room milestone.** The spike (6 h) plus the full build (AP-16, about 30 h) needs about three weeks at 13 hours a week. With a holiday break from 21 December to 3 January, the target is **15 January 2027**. The remaining Release 1.1 items follow by 29 January 2027.
 
 Week dates: W1 19–25 Oct, W2 26 Oct–1 Nov, W3 2–8 Nov, W4 9–15 Nov, W5 16–22 Nov, W6 23–29 Nov (half week).
 
@@ -293,16 +300,16 @@ The 30 November release ships only when every row below passes on the Vercel pre
 
 ## 11. Risks and approvals
 
-The biggest risk is capacity. A 6-hour buffer is lost if one volunteer misses two weeks, so scope is cut in a fixed order instead of letting the date slip.
+The biggest risk is capacity. With 4 volunteers, the 6-hour buffer is used up if one person misses a single week, so scope is cut in a fixed order instead of letting the date slip.
 
-| Risk                                                     | Effect                                   | Response                                                                              |
-| -------------------------------------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------- |
-| Fewer than 6 active volunteers, or less than 5 h each    | Release scope does not fit               | Defer in this order: AP-12, TR-07, AP-14c, AP-18b                                     |
-| Spanish reviewers not found by W4                        | Sensitive content stays English-only     | Acceptable at launch: the notice explains it; general UI still ships in draft Spanish |
-| Real content (Library, Opportunities) not supplied by W3 | Release ships with labelled placeholders | Content owner named in W1; placeholders keep their status tags                        |
-| Art Room estimate grows after the spike                  | December milestone slips                 | Ship the current three-stage canvas at launch, clearly labelled                       |
-| Reviews pile up                                          | Work sits finished but unmerged          | Reviews answered within 3 days; any member may review                                 |
-| Thanksgiving week                                        | About half capacity in W6                | Only stabilization planned for W6                                                     |
+| Risk                                                     | Effect                                   | Response                                                                                                               |
+| -------------------------------------------------------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| A volunteer leaves or gives less than 5 h a week         | Release scope does not fit               | Next cuts, in order: AP-13d (Calm Room and partners stay as TypeScript), then TR-05 replaced by a manual Spanish check |
+| Spanish reviewers not found by W4                        | Sensitive content stays English-only     | Acceptable at launch: the notice explains it; general UI still ships in draft Spanish                                  |
+| Real content (Library, Opportunities) not supplied by W3 | Release ships with labelled placeholders | Content owner named in W1; placeholders keep their status tags                                                         |
+| Art Room estimate grows after the spike                  | January milestone slips                  | Ship the current three-stage canvas at launch, clearly labelled                                                        |
+| Reviews pile up                                          | Work sits finished but unmerged          | Reviews answered within 3 days; any member may review                                                                  |
+| Thanksgiving week                                        | About half capacity in W6                | Only stabilization planned for W6                                                                                      |
 
 **Approvals needed from the founder.** These are listed in `docs/decisions/copy-pending-approval.md`.
 
@@ -315,6 +322,6 @@ The biggest risk is capacity. A 6-hour buffer is lost if one volunteer misses tw
 
 **Open questions.**
 
-- [ ] How many volunteers are active, and at what hours?
+- [ ] Answered 18 October: 4 volunteers at about 5 hours a week
 - [ ] Who owns content supply and Spanish review?
 - [ ] Are the Figma files still coming, and do they change any existing screens?

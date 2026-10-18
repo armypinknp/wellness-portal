@@ -12,7 +12,7 @@ The Portal is free and anonymous: there are no accounts, and nothing a visitor w
 | Privacy choice and saving | Done: "Save on This Device" or "Continue Without Saving", My Saved Items, ZIP export |
 | Content                   | Placeholder text, moving to reviewed JSON files                                      |
 | Spanish                   | Draft for part of the interface; review workflow planned                             |
-| Art Room                  | Basic canvas at launch; full experience targeted for 18 December 2026                |
+| Art Room                  | Basic canvas at launch; full experience targeted for 15 January 2027                 |
 
 ## Documentation
 

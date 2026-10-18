@@ -106,10 +106,15 @@ function Toolkit() {
             <SimulatedBadge what="PIN & encryption — not real protection" />
             <SaveActions
               item={{
+                kind: "reflection",
+                roomId: "toolkit",
+                activityId: "safety-planner",
                 room: "Survivor Toolkit",
                 activity: "Hidden Safety Planner",
                 source: "/toolkit",
-                text: planner.map((p, i) => `${p}\n${notes[i] ?? ""}`).join("\n\n"),
+                payload: {
+                  text: planner.map((p, i) => `${p}\n${notes[i] ?? ""}`).join("\n\n"),
+                },
               }}
             />
           </div>

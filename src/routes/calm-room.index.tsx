@@ -95,10 +95,15 @@ function Calm() {
       {started && completed && (
         <SaveActions
           item={{
+            kind: "exercise",
+            roomId: "calm-room",
+            activityId: "breathing",
             room: "Calm Room",
             activity: "Breathing exercise",
             source: "/calm-room",
-            text: "Breathing exercise completed. Breathe In and Breathe Out alternate every 4 seconds.",
+            payload: {
+              text: "Breathing exercise completed. Breathe In and Breathe Out alternate every 4 seconds.",
+            },
           }}
         />
       )}

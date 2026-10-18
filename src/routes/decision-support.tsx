@@ -77,10 +77,15 @@ function Decision() {
               </p>
               <SaveActions
                 item={{
+                  kind: "reflection",
+                  roomId: "decision-support",
+                  activityId: "decision-reset",
                   room: "Decision Support",
                   activity: "Decision Reset",
                   source: "/decision-support",
-                  text: steps.map((s, i) => `${s.q}\n${answers[i] ?? ""}`).join("\n\n"),
+                  payload: {
+                    text: steps.map((s, i) => `${s.q}\n${answers[i] ?? ""}`).join("\n\n"),
+                  },
                 }}
               />
               <button

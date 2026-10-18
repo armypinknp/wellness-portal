@@ -79,10 +79,15 @@ function Module() {
             <p className="text-xl font-bold">Module complete.</p>
             <SaveActions
               item={{
+                kind: "exercise",
+                roomId: "not-broken",
+                activityId: m.slug,
                 room: "You Are Not Broken",
                 activity: m.title,
                 source: `/not-broken/${m.slug}`,
-                text: "Sample learning module completed. Learning content remains placeholder content.",
+                payload: {
+                  text: "Sample learning module completed. Learning content remains placeholder content.",
+                },
               }}
             />
             <Link to="/not-broken" className="inline-block font-semibold underline">

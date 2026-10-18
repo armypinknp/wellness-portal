@@ -96,10 +96,15 @@ function Room() {
               <div className="mt-4">
                 <SaveActions
                   item={{
+                    kind: "exercise",
+                    roomId: `recovery-${r.slug}`,
+                    activityId: "sample-exercise",
                     room: `${r.name} Room`,
                     activity: "Sample exercise completed",
                     source: `/recovery-rooms/${r.slug}`,
-                    text: "Completed the three-step sample exercise. Guided content remains placeholder content.",
+                    payload: {
+                      text: "Completed the three-step sample exercise. Guided content remains placeholder content.",
+                    },
                   }}
                 />
               </div>

@@ -1,8 +1,16 @@
 import { useState } from "react";
 import { HardDrive, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogCancel,
+} from "@/components/ui/alert-dialog";
 import { useTx } from "@/lib/prefs";
-import { PRIVACY_WARNING } from "@/lib/saved-items";
+import { PRIVACY_WARNING } from "@/lib/privacy-copy";
 import { useSaving } from "./SavingProvider";
 
 export function PrivacyWarning() {
@@ -12,12 +20,32 @@ export function PrivacyWarning() {
 
 export function PrivacyChoice({ onChoice }: { onChoice?: () => void }) {
   const tx = useTx();
-  const { choose, error } = useSaving();
+  const { choose, remove, error, items, preference } = useSaving();
   const [busy, setBusy] = useState(false);
+  // D5: turning saving off with items present asks whether to keep or delete them.
+  const [askExisting, setAskExisting] = useState<"ask" | "confirm-delete" | null>(null);
   const select = async (value: "device" | "none") => {
+    if (value === "none" && preference === "device" && items.length > 0) {
+      setAskExisting("ask");
+      return;
+    }
     setBusy(true);
     if (await choose(value)) onChoice?.();
     setBusy(false);
+  };
+  const continueWithoutSaving = async (deleteExisting: boolean) => {
+    setBusy(true);
+    try {
+      if (deleteExisting) await remove(null, true);
+      if (await choose("none")) {
+        setAskExisting(null);
+        onChoice?.();
+      }
+    } catch {
+      // Provider shows a content-free error; keep the dialog open to retry.
+    } finally {
+      setBusy(false);
+    }
   };
   return (
     <div className="w-full space-y-5">
@@ -66,6 +94,70 @@ export function PrivacyChoice({ onChoice }: { onChoice?: () => void }) {
           {tx(error)}
         </p>
       )}
+      <AlertDialog
+        open={askExisting !== null}
+        onOpenChange={(open) => {
+          if (!open && !busy) setAskExisting(null);
+        }}
+      >
+        <AlertDialogContent className="max-w-[calc(100%-2rem)] rounded-lg sm:max-w-lg">
+          {/* Copy pending founder approval (ADR 0001, D5). */}
+          {askExisting === "confirm-delete" ? (
+            <>
+              <AlertDialogTitle>{tx("Permanently delete all saved items?")}</AlertDialogTitle>
+              <AlertDialogDescription>
+                {tx("This cannot be undone. Downloaded or shared copies are not removed.")}
+              </AlertDialogDescription>
+              <AlertDialogFooter>
+                <Button
+                  variant="outline"
+                  disabled={busy}
+                  className="rounded-full"
+                  onClick={() => setAskExisting("ask")}
+                >
+                  {tx("Cancel")}
+                </Button>
+                <Button
+                  disabled={busy}
+                  className="rounded-full"
+                  onClick={() => void continueWithoutSaving(true)}
+                >
+                  {tx(busy ? "Deleting…" : "Delete permanently")}
+                </Button>
+              </AlertDialogFooter>
+            </>
+          ) : (
+            <>
+              <AlertDialogTitle>{tx("What should happen to your saved items?")}</AlertDialogTitle>
+              <AlertDialogDescription>
+                {tx(
+                  "New items will not be saved. Items you already saved stay in this browser on this device until you delete them.",
+                )}
+              </AlertDialogDescription>
+              <AlertDialogFooter>
+                <AlertDialogCancel disabled={busy} className="rounded-full">
+                  {tx("Cancel")}
+                </AlertDialogCancel>
+                <Button
+                  variant="outline"
+                  disabled={busy}
+                  className="rounded-full"
+                  onClick={() => setAskExisting("confirm-delete")}
+                >
+                  {tx("Delete them now")}
+                </Button>
+                <Button
+                  disabled={busy}
+                  className="rounded-full"
+                  onClick={() => void continueWithoutSaving(false)}
+                >
+                  {tx("Keep my saved items")}
+                </Button>
+              </AlertDialogFooter>
+            </>
+          )}
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

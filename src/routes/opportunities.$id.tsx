@@ -70,7 +70,17 @@ function Opp() {
               <ExternalLink className="h-4 w-4" /> Visit website
             </button>
           </div>
-          <SaveActions allowDelete={false} />
+          <SaveActions
+            item={{
+              kind: "resource",
+              roomId: "opportunities",
+              activityId: o.id,
+              room: "Opportunities",
+              activity: o.title,
+              source: `/opportunities/${o.id}`,
+              payload: { text: `Offered by ${o.org}` },
+            }}
+          />
         </aside>
       </div>
     </PageShell>

@@ -56,10 +56,15 @@ function Resource() {
       </article>
       <SaveActions
         item={{
+          kind: "resource",
+          roomId: "library",
+          activityId: r.id,
           room: "Healing Library",
           activity: r.title,
           source: `/resource/${r.id}`,
-          text: `${r.type} — ${r.formatNote}. Placeholder article body. Final content remains pending approval.`,
+          payload: {
+            text: `${r.type} — ${r.formatNote}. Placeholder article body. Final content remains pending approval.`,
+          },
         }}
       />
       <div className="mt-8 flex flex-wrap gap-3">

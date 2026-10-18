@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Download, Trash2, ArrowLeft, FolderOpen } from "lucide-react";
 import { PageShell } from "@/components/portal/Shell";
 import { PrivacyChoice, PrivacyWarning } from "@/components/portal/PrivacyChoice";
@@ -14,7 +14,8 @@ import {
   AlertDialogCancel,
   AlertDialogAction,
 } from "@/components/ui/alert-dialog";
-import { collectionBlob, deliverCollection } from "@/lib/saved-items";
+import { deliverCollection } from "@/lib/export/collection";
+import { itemImage, itemText } from "@/lib/storage/schema";
 import { useTx } from "@/lib/prefs";
 
 export const Route = createFileRoute("/saved-items")({
@@ -40,14 +41,13 @@ export const Route = createFileRoute("/saved-items")({
 
 function SavedItems() {
   const tx = useTx();
-  const { items, ready, error, preference, remove } = useSaving();
+  const { items, ready, error, preference, remove, exportCollection } = useSaving();
   const [filter, setFilter] = useState("");
   const [opened, setOpened] = useState<string | null>(null);
   const [pending, setPending] = useState<string | "all" | null>(null);
   const [changing, setChanging] = useState(false);
   const [busy, setBusy] = useState(false);
   const [exportError, setExportError] = useState("");
-  const blob = useMemo(() => collectionBlob(items), [items]);
   const rooms = [...new Set(items.map((x) => x.room))];
   const selected = items.find((x) => x.id === opened);
   const deleteConfirmed = async () => {
@@ -106,15 +106,17 @@ function SavedItems() {
           <p className="text-sm text-muted-foreground">
             {tx(selected.room)} · {new Date(selected.createdAt).toLocaleDateString()}
           </p>
-          {selected.image && (
+          {itemImage(selected) && (
             <img
-              src={selected.image}
+              src={itemImage(selected)}
               alt="Saved artwork"
               className="w-full max-w-2xl rounded-lg border bg-card"
             />
           )}
-          {selected.text && (
-            <p className="max-w-2xl whitespace-pre-wrap break-words text-base">{selected.text}</p>
+          {itemText(selected) && (
+            <p className="max-w-2xl whitespace-pre-wrap break-words text-base">
+              {itemText(selected)}
+            </p>
           )}
           <div className="flex flex-wrap gap-3">
             <Button asChild variant="outline" className="rounded-full">
@@ -152,9 +154,12 @@ function SavedItems() {
               className="h-auto min-h-11 whitespace-normal rounded-full"
               onClick={() => {
                 setExportError("");
-                void deliverCollection(blob).catch(() =>
-                  setExportError("Could not export your collection. Please try again."),
-                );
+                // Built and downloaded locally; nothing is uploaded (ADR 0001, D3).
+                void exportCollection()
+                  .then(deliverCollection)
+                  .catch(() =>
+                    setExportError("Could not export your collection. Please try again."),
+                  );
               }}
             >
               <Download />

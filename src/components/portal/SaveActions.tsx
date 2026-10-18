@@ -1,23 +1,22 @@
 import { Save } from "lucide-react";
-import { Link, useLocation } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useTx } from "@/lib/prefs";
 import { Button } from "@/components/ui/button";
-import type { SavedContent } from "@/lib/saved-items";
+import { StorageError } from "@/lib/storage/errors";
+import type { SaveInput } from "@/lib/storage/schema";
 import { useSaving } from "./SavingProvider";
 import { PrivacyChoice, PrivacyWarning } from "./PrivacyChoice";
 
+/** The one save control every room uses. Saving only ever happens on click. */
 export function SaveActions({
   item,
-  allowDelete: _allowDelete,
 }: {
-  item?: SavedContent | (() => SavedContent | Promise<SavedContent>);
-  allowDelete?: boolean;
+  item: SaveInput | (() => SaveInput | Promise<SaveInput>);
 }) {
   const tx = useTx();
   const { ready, preference, save } = useSaving();
-  const { pathname } = useLocation();
   const [busy, setBusy] = useState(false);
   const [choosing, setChoosing] = useState(false);
   const [error, setError] = useState("");
@@ -29,21 +28,15 @@ export function SaveActions({
     setBusy(true);
     setError("");
     try {
-      const content =
-        typeof item === "function"
-          ? await item()
-          : (item ?? {
-              room: "Portal",
-              activity: document.title,
-              source: pathname,
-              text: "Saved page reference (prototype content).",
-            });
+      const content = typeof item === "function" ? await item() : item;
       await save(content);
       toast(tx("Saved to My Saved Items on this device."));
-    } catch {
+    } catch (e) {
       setError(
         tx(
-          "Could not save this item. Browser storage may be unavailable or full. Nothing new was saved.",
+          e instanceof StorageError && e.code === "invalid"
+            ? e.message
+            : "Could not save this item. Browser storage may be unavailable or full. Nothing new was saved.",
         ),
       );
     } finally {

@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { PageShell, StatusTag } from "@/components/portal/Shell";
 import { SimulatedBadge, SimulatedPin } from "@/components/portal/Simulated";
 import { useTx } from "@/lib/prefs";
+import { toSlug } from "@/lib/storage/schema";
 import { SaveActions } from "@/components/portal/SaveActions";
 
 export const Route = createFileRoute("/journals")({
@@ -146,10 +147,13 @@ function Journals() {
         </div>
         <SaveActions
           item={{
+            kind: "reflection",
+            roomId: "journals",
+            activityId: toSlug(open),
             room: "Healing Journals",
             activity: open,
             source: "/journals",
-            text: steps.map((s, i) => `${s.q}\n${text[i] ?? ""}`).join("\n\n"),
+            payload: { text: steps.map((s, i) => `${s.q}\n${text[i] ?? ""}`).join("\n\n") },
           }}
         />
       </main>

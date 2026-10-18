@@ -125,10 +125,15 @@ function Player() {
       </div>
       <SaveActions
         item={{
+          kind: "exercise",
+          roomId: "calm-room",
+          activityId: m.id,
           room: "Calm Room",
           activity: m.title,
           source: `/calm-room/${m.id}`,
-          text: `Sample ${m.kind} resource. ${pos >= 100 ? "Completed sample player." : "Saved resource reference."} Media is a placeholder.`,
+          payload: {
+            text: `Sample ${m.kind} resource. ${pos >= 100 ? "Completed sample player." : "Saved resource reference."} Media is a placeholder.`,
+          },
         }}
       />
     </PageShell>

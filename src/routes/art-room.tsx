@@ -295,10 +295,13 @@ function ArtRoom() {
               const canvas = canvasRef.current;
               if (!canvas) throw new Error("Drawing unavailable");
               return {
+                kind: "artwork",
+                roomId: "art-room",
+                activityId: `stage-${stage + 1}`,
                 room: "Art Room",
                 activity: stages[stage]?.title ?? "Artwork",
                 source: "/art-room",
-                image: canvas.toDataURL("image/png"),
+                payload: { image: canvas.toDataURL("image/png") },
               };
             }}
           />

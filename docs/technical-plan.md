@@ -272,6 +272,63 @@ Release scope is 68 developer hours in tickets of 5 hours or less, about 13 hour
 
 Week dates: W1 19–25 Oct, W2 26 Oct–1 Nov, W3 2–8 Nov, W4 9–15 Nov, W5 16–22 Nov, W6 23–29 Nov (half week).
 
+### To-do checklist by week
+
+This is the backlog as plain to-dos. Tick each box when its pull request is merged; the ticket ID matches the GitHub issue.
+
+**Every week (team lead)**
+
+- [ ] Monday: assign one ticket to each volunteer from this week's list
+- [ ] Friday: collect the async update from each person (done, next, blocked) and move anything unfinished to next week
+
+**W1 · 19–25 Oct**
+
+- [ ] **TR-01** Set up the Spanish word lists: create `en.json` and `es.json`, add a `t()` lookup, and make the page language follow the EN/ES toggle (5 h)
+- [ ] **AP-07a** My Saved Items: group saved things by room and activity, and keep the filter working (3 h)
+- [ ] **AP-13a** Write the rules (schemas) that every content file must follow: library, modules, opportunities, partners, calm media (4 h)
+
+**W2 · 26 Oct–1 Nov**
+
+- [ ] **AP-07b** My Saved Items: clear messages when the list is empty, when storage fails, or when an item is missing (3 h)
+- [ ] **TR-02a** Move the header, footer and privacy-screen text into the Spanish word lists (4 h)
+- [ ] **AP-13b** Move the Healing Library content into a JSON file (4 h)
+- [ ] **AP-10a** Add automatic accessibility checks (axe) to every page and fix anything serious (3 h)
+
+**W3 · 2–8 Nov**
+
+- [ ] **TR-02b** Move the room and library text into the word lists, one pull request per area (6 h)
+- [ ] **AP-13c** Move the learning modules and Opportunities into JSON, keeping the existing categories (4 h)
+- [ ] **TR-03** Mark each Spanish string draft, reviewed or approved; show sensitive text in English with a notice until approved (4 h)
+
+**W4 · 9–15 Nov**
+
+- [ ] **AP-13d** Move the Calm Room and partner listings into JSON; invent nothing, keep placeholders labelled (4 h)
+- [ ] **AP-14a** Rebuild the Recovery Room pages on the shared card and Save button (4 h)
+- [ ] **AP-14b** Rebuild the Calm Room and Journals on shared parts; the media player must work by keyboard (4 h)
+
+**W5 · 16–22 Nov**
+
+- [ ] **TR-05** Check every page in Spanish on phone and desktop for cut-off or overflowing text (4 h)
+- [ ] **AP-17** Write the Vercel deploy and rollback steps, and rehearse a rollback once (4 h)
+- [ ] **REL-01a** Draft the release checklist and the known-limitations list, and agree them with the founder (3 h)
+
+**W6 · 23–29 Nov (half week)**
+
+- [ ] **REL-01b** Fix last bugs, get founder sign-off and deploy on 30 November (5 h)
+
+**Founder and leadership, before launch**
+
+- [ ] Approve the survivor-facing wording in `docs/decisions/copy-pending-approval.md` (by W4)
+- [ ] Choose the Quick Exit destination site (by W4)
+- [ ] Name an owner for real content and for Spanish review (by W1)
+- [ ] Agree that the Release 1.1 items can follow in January (by W1)
+
+**After launch**
+
+- [ ] **AP-18a/b** Art Room spike: choose the drawing approach and split the build into 5-hour tickets (early December)
+- [ ] **AP-16** Build the full Art Room experience (December to 15 January 2027)
+- [ ] **Release 1.1**: AP-09, AP-12, TR-04, TR-07, AP-14c, AP-10b (by 29 January 2027)
+
 ## 10. Release criteria
 
 The 30 November release ships only when every row below passes on the Vercel preview. Rows marked "In place" are already enforced by tests that run on every build.

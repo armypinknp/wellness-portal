@@ -1,0 +1,40 @@
+name: Bug report
+description: Something is broken
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include real saved content, journal text, drawings or personal data. Describe the steps with made-up test data.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      value: |
+        1.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Browser / device
+      placeholder: e.g. Safari 18, iPhone 15
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Does it affect privacy or Quick Exit?
+      options: ["No", "Yes - privacy or data leak", "Yes - Quick Exit"]
+    validations:
+      required: true

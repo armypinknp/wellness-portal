@@ -94,8 +94,14 @@ export const es: Record<string, string> = {
   "You found a safe place.": "Encontraste un lugar seguro.",
   "Take a breath. There's no rush here.": "Respira. Aquí no hay prisa.",
   "This keeps you safe.": "Esto te mantiene segura.",
-  'Tap "Quick exit" (top corner) anytime to leave for a neutral page. You can also press the Esc key.':
-    'Toca "Salida rápida" (en la esquina) en cualquier momento para ir a una página neutral. También puedes presionar la tecla Esc.',
+  'Tap "Quick exit" (top corner) anytime to leave instantly for a neutral page. When you aren\'t typing, you can also press the Esc key.':
+    'Toca "Salida rápida" (en la esquina) en cualquier momento para ir de inmediato a una página neutral. Cuando no estés escribiendo, también puedes presionar la tecla Esc.',
+  // D5 dialog (ADR 0001); copy pending founder approval.
+  "What should happen to your saved items?": "¿Qué quieres hacer con tus elementos guardados?",
+  "New items will not be saved. Items you already saved stay in this browser on this device until you delete them.":
+    "No se guardarán elementos nuevos. Los elementos que ya guardaste permanecen en este navegador, en este dispositivo, hasta que los elimines.",
+  "Keep my saved items": "Conservar mis elementos guardados",
+  "Delete them now": "Eliminarlos ahora",
   "There's no wrong way to be here.": "No hay una forma equivocada de estar aquí.",
   "Go as slow as you need. You can skip anything.":
     "Ve tan despacio como necesites. Puedes omitir lo que quieras.",

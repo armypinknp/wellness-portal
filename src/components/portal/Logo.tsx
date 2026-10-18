@@ -7,9 +7,7 @@ export function LogoMark({ className = "h-9 w-9" }: { className?: string; mono?:
 }
 
 export function Wordmark({ className = "h-12" }: { className?: string }) {
-  return (
-    <img src={word} alt="Wellness Portal" className={`${className} w-auto object-contain`} />
-  );
+  return <img src={word} alt="Wellness Portal" className={`${className} w-auto object-contain`} />;
 }
 
 export function Logo() {

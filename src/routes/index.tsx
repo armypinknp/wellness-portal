@@ -144,7 +144,7 @@ const faqs = [
   },
   {
     q: "What does Quick Exit do?",
-    a: "Quick Exit (or the Esc key) immediately leaves the Portal and opens a neutral website.",
+    a: "Quick Exit (or the Esc key, when you aren't typing) immediately leaves the Portal and opens a neutral website. It does not erase your browser history.",
   },
   {
     q: "What if I need help right now?",

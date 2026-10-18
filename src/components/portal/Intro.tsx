@@ -109,7 +109,7 @@ export function Intro({ onDone }: { onDone: () => void }) {
         <h1 className="text-3xl font-bold sm:text-4xl">{tx("This keeps you safe.")}</h1>
         <p className="mt-3 text-primary">
           {tx(
-            'Tap "Quick exit" (top corner) anytime to leave instantly for a neutral page. You can also press the Esc key.',
+            'Tap "Quick exit" (top corner) anytime to leave instantly for a neutral page. When you aren\'t typing, you can also press the Esc key.',
           )}
         </p>
         <button onClick={next} className={`mt-10 ${primary}`}>

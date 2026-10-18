@@ -1,0 +1,31 @@
+# Owners per workstream. Replace @namra95 with the volunteer who owns each
+# workstream once assignments are confirmed. Later rules override earlier ones.
+
+*                         @namra95
+
+# ws:foundation
+/src/components/          @namra95
+/src/routes/__root.tsx    @namra95
+/vite.config.ts           @namra95
+/vercel.json              @namra95
+/package.json             @namra95
+/package-lock.json        @namra95
+
+# ws:storage
+/src/lib/storage/         @namra95
+
+# ws:rooms
+/src/routes/              @namra95
+
+# ws:content
+/src/data/                @namra95
+/src/lib/es.ts            @namra95
+/content/                 @namra95
+
+# ws:art-room
+/src/features/art-room/   @namra95
+
+# ws:qa-security
+/e2e/                     @namra95
+/scripts/inject-csp.mjs   @namra95
+/.github/                 @namra95

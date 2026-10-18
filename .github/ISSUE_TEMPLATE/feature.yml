@@ -1,0 +1,41 @@
+name: Feature / ticket
+description: A backlog ticket (AP-NN) or new piece of work
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Never paste real survivor content, screenshots of saved items, or personal data into an issue.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What and why. Link the backlog ticket (AP-NN) if there is one.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      value: |
+        - [ ]
+    validations:
+      required: true
+  - type: input
+    id: depends
+    attributes:
+      label: Depends on
+      placeholder: "Depends on #N"
+  - type: dropdown
+    id: workstream
+    attributes:
+      label: Workstream
+      options: [foundation, storage, rooms, content, art-room, qa-security]
+    validations:
+      required: true
+  - type: checkboxes
+    id: copy
+    attributes:
+      label: Survivor-facing copy
+      options:
+        - label: This adds or changes survivor-facing text (add the needs-founder-approval label)
